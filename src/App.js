@@ -12,6 +12,7 @@ class App extends Component {
     };
 
     this.buttonPress = this.buttonPress.bind(this);
+    //this.removeItem = this.removeItem.bind(this);
   }
 
   textChange(value) {
@@ -30,6 +31,11 @@ class App extends Component {
     this.setState({textField: ''});
   }
 
+  removeItem(index) {
+    console.log('delete pressed', index);
+    this.setState({taskList: this.state.taskList.slice(index, index + 1)});
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,9 +50,7 @@ class App extends Component {
             value='submit task' 
             onClick={this.buttonPress} />
         </form>
-        <ul>
-          {this.state.taskList.map((item, index) => <Overview key={index} task={item}/>)}
-        </ul>
+        <Overview tasks={this.state.taskList} delete={this.removeItem} this={this}/>
       </div>
     );
   }

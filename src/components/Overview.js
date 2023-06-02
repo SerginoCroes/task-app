@@ -7,7 +7,13 @@ export class Overview extends Component {
 
     render() {
         return (
-            <li>{this.props.task}</li>
+          <ul>
+            {this.props.tasks.map((item, index) =>                 
+                <li key={index}>{item} 
+                <input type='button' value='delete' onClick={this.props.delete.bind(this.props.this, index + 1)}></input>
+                </li>
+            )}
+          </ul>
         )
     }
 }
