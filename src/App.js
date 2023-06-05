@@ -11,8 +11,8 @@ class App extends Component {
       textField: ''
     };
 
-    this.buttonPress = this.buttonPress.bind(this);
-    //this.removeItem = this.removeItem.bind(this);
+    this.submitPress = this.submitPress.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   textChange(value) {
@@ -22,18 +22,19 @@ class App extends Component {
   onEnter(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      this.buttonPress();
+      this.submitPress();
     }
   }
 
-  buttonPress() {
+  submitPress() {
     this.setState({taskList: [...this.state.taskList, this.state.textField]});
     this.setState({textField: ''});
   }
 
   removeItem(index) {
-    console.log('delete pressed', index);
-    this.setState({taskList: this.state.taskList.slice(index, index + 1)});
+    const tempTaskList = [...this.state.taskList];
+    tempTaskList.splice(index, 1);
+    this.setState({taskList: tempTaskList});
   }
 
   render() {
@@ -48,9 +49,9 @@ class App extends Component {
           <input 
             type='button' 
             value='submit task' 
-            onClick={this.buttonPress} />
+            onClick={this.submitPress} />
         </form>
-        <Overview tasks={this.state.taskList} delete={this.removeItem} this={this}/>
+        <Overview tasks={this.state.taskList} delete={this.removeItem} />
       </div>
     );
   }
