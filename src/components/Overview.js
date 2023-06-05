@@ -1,20 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class Overview extends Component {
-  constructor(props) {
-    super(props);
-  }
+export const Overview = (props) => {
 
-  render() {
-    return (
-      <ul>
-        {this.props.tasks.map((item, index) =>                 
-          <li key={index}>
-            {`${item} `} 
-            <input type='button' value='delete' onClick={() => {this.props.delete(index)}} />
-          </li>
-        )}
-      </ul>
-    )
-  }
+  const [tasks, remove] = props;
+
+  return (
+    <ul>
+      {tasks.map((item, index) =>                 
+        <li key={index}>
+          {`${item} `} 
+          <input type='button' value='delete' onClick={() => {remove(index)}} />
+        </li>
+      )}
+    </ul>
+  )  
 }
