@@ -16,14 +16,3 @@ export const Overview = (props) => {
     </ul>
   )  
 }
-  return (
-    <ul>
-      {tasks.map((item, index) =>                 
-        <li key={index}>
-          {`${item} `} 
-          <input type='button' value='delete' onClick={() => {remove(index)}} />
-        </li>
-      )}
-    </ul>
-  )  
-}
