@@ -51,7 +51,7 @@ class App extends Component {
             value='submit task' 
             onClick={this.submitPress} />
         </form>
-        <Overview tasks={this.state.taskList} delete={this.removeItem} />
+        <Overview tasks={this.state.taskList} remove={this.removeItem} />
       </div>
     );
   }
