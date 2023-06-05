@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   textChange(value) {
-    this.setState({textField: value});
+    this.setState({ textField: value });
   }
 
   onEnter(e) {
@@ -27,28 +27,28 @@ class App extends Component {
   }
 
   submitPress() {
-    this.setState({taskList: [...this.state.taskList, this.state.textField]});
-    this.setState({textField: ''});
+    this.setState({ taskList: [...this.state.taskList, this.state.textField] });
+    this.setState({ textField: '' });
   }
 
   removeItem(index) {
     const tempTaskList = [...this.state.taskList];
     tempTaskList.splice(index, 1);
-    this.setState({taskList: tempTaskList});
+    this.setState({ taskList: tempTaskList });
   }
 
   render() {
     return (
       <div className="App">
         <form>
-          <input 
-            type='text' 
-            value={this.state.textField} 
+          <input
+            type='text'
+            value={this.state.textField}
             onChange={e => this.textChange(e.target.value)}
             onKeyDown={e => this.onEnter(e)} />
-          <input 
-            type='button' 
-            value='submit task' 
+          <input
+            type='button'
+            value='submit task'
             onClick={this.submitPress} />
         </form>
         <Overview tasks={this.state.taskList} remove={this.removeItem} />
